@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mood-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mood-consumer
+  template:
+    metadata:
+      labels:
+        app: mood-consumer
+    spec:
+      containers:
+        - name: mood-consumer
+          image: mood-consumer:latest
+          imagePullPolicy: Never
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
