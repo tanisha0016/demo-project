@@ -1,0 +1,28 @@
+name: Deploy Mood Tracker
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up K8s context (Minikube - placeholder)
+        run: echo "Use 'minikube start' locally"
+
+      - name: Build Docker images
+        run: |
+          docker build -t mood-producer:latest ./producer
+          docker build -t mood-consumer:latest ./consumer
+
+      - name: Load into Minikube
+        run: |
+          minikube image load mood-producer:latest
+          minikube image load mood-consumer:latest
+
+      - name: Apply K8s configs
+        run: kubectl apply -f k8s/
