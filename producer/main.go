@@ -74,8 +74,8 @@ func main() {
     }()
 
     http.HandleFunc("/mood", moodHandler)
-    log.Println("Starting producer on :8080...")
-    if err := http.ListenAndServe(":8080", nil); err != nil {
+    log.Println("Starting producer on :61810...")
+    if err := http.ListenAndServe(":61810", nil); err != nil {
         log.Fatalf("HTTP server error: %v", err)
     }
 }
