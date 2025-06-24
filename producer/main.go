@@ -46,8 +46,10 @@ func moodHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Printf("Mood successfully produced: %s", string(moodJSON))
-	w.WriteHeader(http.StatusAccepted)
-	w.Write([]byte("Mood received"))
+	w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusOK)
+    w.Write([]byte(`{"message":"Mood received"}`))
+
 }
 
 func main() {
