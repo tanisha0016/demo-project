@@ -1,9 +1,0 @@
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: mood-form-location
-  description: Location of Mood Form Template
-spec:
-  type: template
-  targets:
-    - ./mood-form.yaml
